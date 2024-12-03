@@ -19,5 +19,10 @@ namespace MC.Infrastructure.Databases.Repositories
             await GetByExpression(expression)
                 .Include(tbl => tbl.Group)
                 .ToListAsync(cancellationToken);
+
+        public async Task<Member?> GetMemberByIdAsync(Guid id, CancellationToken cancellationToken = default) =>
+            await GetByExpression(member => member.Id == id)
+                .Include(tbl => tbl.Group)
+                .FirstOrDefaultAsync(cancellationToken);
     }
 }

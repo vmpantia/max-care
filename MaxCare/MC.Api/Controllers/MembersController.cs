@@ -19,5 +19,12 @@ namespace MC.Api.Controllers
             var result = await _mediator.Send(new GetMembersQuery());
             return Ok(result);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetMembers(Guid id)
+        {
+            var result = await _mediator.Send(new GetMemberByIdQuery(id));
+            return Ok(result);
+        }
     }
 }
