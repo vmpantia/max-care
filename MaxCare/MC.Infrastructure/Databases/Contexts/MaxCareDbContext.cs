@@ -1,4 +1,5 @@
 ﻿using MC.Shared.Models.Entities;
+using MC.Shared.Models.Enumerations;
 using Microsoft.EntityFrameworkCore;
 
 namespace MC.Infrastructure.Databases.Contexts
@@ -20,6 +21,8 @@ namespace MC.Infrastructure.Databases.Contexts
                 .WithOne(member => member.Group)
                 .HasForeignKey(member => member.GroupId)
                 .IsRequired(false);
+
+                group.HasQueryFilter(data => data.Status != Status.Deleted);
             });
 
             modelBuilder.Entity<Member>(member =>
@@ -28,7 +31,13 @@ namespace MC.Infrastructure.Databases.Contexts
                 .WithMany(group => group.Members)
                 .HasForeignKey(member => member.GroupId)
                 .IsRequired(false);
+
+                member.HasQueryFilter(data => data.Status != Status.Deleted);
             });
+
+            modelBuilder.Entity<Contact>(member => member.HasQueryFilter(data => data.Status != Status.Deleted));
+
+            modelBuilder.Entity<Address>(member => member.HasQueryFilter(data => data.Status != Status.Deleted));
         }
     }
 }

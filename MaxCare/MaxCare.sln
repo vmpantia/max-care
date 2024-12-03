@@ -5,7 +5,9 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MC.Shared", "MC.Shared\MC.Shared.csproj", "{E7E355C8-D899-4C19-81C9-7DA1D740FDEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MC.Infrastructure", "MC.Infrastructure\MC.Infrastructure.csproj", "{EB9476AA-8606-4A53-9414-3D1A18EB3D34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MC.Infrastructure", "MC.Infrastructure\MC.Infrastructure.csproj", "{EB9476AA-8606-4A53-9414-3D1A18EB3D34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MC.Api", "MC.Api\MC.Api.csproj", "{3C54BD75-CE03-470A-B01A-BC0D61BCBCAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{EB9476AA-8606-4A53-9414-3D1A18EB3D34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB9476AA-8606-4A53-9414-3D1A18EB3D34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB9476AA-8606-4A53-9414-3D1A18EB3D34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C54BD75-CE03-470A-B01A-BC0D61BCBCAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C54BD75-CE03-470A-B01A-BC0D61BCBCAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C54BD75-CE03-470A-B01A-BC0D61BCBCAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C54BD75-CE03-470A-B01A-BC0D61BCBCAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
