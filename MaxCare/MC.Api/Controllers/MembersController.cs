@@ -1,5 +1,5 @@
-using MC.Shared.Contracts.Repositories;
-using MC.Shared.Models.Enumerations;
+using MC.Core.Members.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MC.Api.Controllers
@@ -8,17 +8,15 @@ namespace MC.Api.Controllers
     [Route("[controller]")]
     public class MembersController : ControllerBase
     {
-        private readonly IMemberRepository _memberRepository;
+        private readonly IMediator _mediator;
 
-        public MembersController(IMemberRepository memberRepository) =>
-            _memberRepository = memberRepository;
+        public MembersController(IMediator mediator) =>
+            _mediator = mediator;
 
         [HttpGet]
         public async Task<IActionResult> GetMembers()
         {
-            // Get all the members from the database
-            var result = await _memberRepository.GetMembersAsync();
-
+            var result = await _mediator.Send(new GetMembersQuery());
             return Ok(result);
         }
     }

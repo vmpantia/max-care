@@ -10,14 +10,14 @@ namespace MC.Infrastructure.Databases.Repositories
     {
         public MemberRepository(MaxCareDbContext maxCareDbContext) : base(maxCareDbContext) { }
 
-        public async Task<IEnumerable<Member>> GetMembersAsync() => 
+        public async Task<IEnumerable<Member>> GetMembersAsync(CancellationToken cancellationToken = default) => 
             await GetAll()
                 .Include(tbl => tbl.Group)
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
 
-        public async Task<IEnumerable<Member>> GetMembersAsync(Expression<Func<Member, bool>> expression) =>
+        public async Task<IEnumerable<Member>> GetMembersAsync(Expression<Func<Member, bool>> expression, CancellationToken cancellationToken = default) =>
             await GetByExpression(expression)
                 .Include(tbl => tbl.Group)
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
     }
 }

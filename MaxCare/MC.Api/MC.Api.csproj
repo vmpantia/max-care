@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MC.Core\MC.Core.csproj" />
     <ProjectReference Include="..\MC.Infrastructure\MC.Infrastructure.csproj" />
     <ProjectReference Include="..\MC.Shared\MC.Shared.csproj" />
   </ItemGroup>
