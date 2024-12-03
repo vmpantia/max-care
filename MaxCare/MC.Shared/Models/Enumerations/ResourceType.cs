@@ -1,7 +1,8 @@
 ﻿namespace MC.Shared.Models.Enumerations
 {
-    public enum ContactResourceType
+    public enum ResourceType
     {
-        Member
+        Member,
+        Group
     }
 }

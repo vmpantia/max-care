@@ -9,7 +9,7 @@ namespace MC.Shared.Models.Entities
         [Key]
         public Guid Id { get; set; }
         public Guid ResourceId { get; set; }
-        public ContactResourceType ResourceType { get; set; }
+        public ResourceType ResourceType { get; set; }
         public string Value { get; set; }
         public string? Description { get; set; }
         public bool IsPrimary { get; set; }
