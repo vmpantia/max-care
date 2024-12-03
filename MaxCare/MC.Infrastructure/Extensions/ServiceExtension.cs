@@ -23,6 +23,8 @@ namespace MC.Infrastructure.Extensions
         private static void AddRepositories(this IServiceCollection services)
         {
             services.AddScoped<IMemberRepository, MemberRepository>();
+            services.AddScoped<IContactRepository, ContactRepository>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
         }
     }
 }

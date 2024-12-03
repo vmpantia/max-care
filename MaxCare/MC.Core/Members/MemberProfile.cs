@@ -10,7 +10,9 @@ namespace MC.Core.Members
         {
             CreateMap<Member, MemberDto>()
                 .ForMember(dst => dst.LastModifiedBy, opt => opt.MapFrom(src => src.EditedBy ?? src.CreatedBy))
-                .ForMember(dst => dst.LastModifiedAtUtc, opt => opt.MapFrom(src => src.EditedAtUtc ?? src.CreatedAtUtc));
+                .ForMember(dst => dst.LastModifiedAtUtc, opt => opt.MapFrom(src => src.EditedAtUtc ?? src.CreatedAtUtc))
+                .ForMember(dst => dst.Contacts, opt => opt.Ignore())
+                .ForMember(dst => dst.Addresses, opt => opt.Ignore());
         }
     }
 }
