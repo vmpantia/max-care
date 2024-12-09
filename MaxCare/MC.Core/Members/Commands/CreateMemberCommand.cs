@@ -1,10 +1,11 @@
 ﻿using MC.Shared.Models.Dtos.Members;
 using MC.Shared.Models.Enumerations;
+using MC.Shared.Results;
 using MediatR;
 
 namespace MC.Core.Members.Commands
 {
-    public class CreateMemberCommand : IRequest<MemberDto>
+    public class CreateMemberCommand : IRequest<Result<MemberDto>>
     {
         public CreateMemberCommand(CreateMemberDto dto)
         {

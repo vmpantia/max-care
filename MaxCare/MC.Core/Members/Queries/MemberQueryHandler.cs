@@ -3,13 +3,15 @@ using MC.Shared.Contracts.Repositories;
 using MC.Shared.Models.Dtos.Addresses;
 using MC.Shared.Models.Dtos.Contacts;
 using MC.Shared.Models.Dtos.Members;
+using MC.Shared.Results;
+using MC.Shared.Results.Errors;
 using MediatR;
 
 namespace MC.Core.Members.Queries
 {
     public sealed class MemberQueryHandler : 
-        IRequestHandler<GetMembersQuery, IEnumerable<MemberDto>>,
-        IRequestHandler<GetMemberByIdQuery, MemberDto>
+        IRequestHandler<GetMembersQuery, Result<IEnumerable<MemberDto>>>,
+        IRequestHandler<GetMemberByIdQuery, Result<MemberDto>>
     {
         private readonly IMemberRepository _memberRepository;
         private readonly IAddressRepository _addressRepository;
@@ -25,7 +27,7 @@ namespace MC.Core.Members.Queries
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<MemberDto>> Handle(GetMembersQuery request, CancellationToken cancellationToken)
+        public async Task<Result<IEnumerable<MemberDto>>> Handle(GetMembersQuery request, CancellationToken cancellationToken)
         {
             var dtos = new List<MemberDto>();
 
@@ -49,17 +51,17 @@ namespace MC.Core.Members.Queries
                 dtos.Add(dto);
             }
 
-            return dtos;
+            return Result<IEnumerable<MemberDto>>.Success(dtos);
         }
 
-        public async Task<MemberDto> Handle(GetMemberByIdQuery request, CancellationToken cancellationToken)
+        public async Task<Result<MemberDto>> Handle(GetMemberByIdQuery request, CancellationToken cancellationToken)
         {
             // Get member from the database using id
             var member = await _memberRepository.GetMemberByIdAsync(request.Id, cancellationToken);
 
             // Check if the member is NULL
             if (member is null) 
-                throw new Exception($"Member with an Id of {request.Id} is not found in the database.");
+                return Result<MemberDto>.Failure(MemberError.NotFound(request.Id));
 
             // Convert entity to dto
             var dto = _mapper.Map<MemberDto>(member);
@@ -72,7 +74,7 @@ namespace MC.Core.Members.Queries
             var contacts = await _contactRepository.GetMemberContactsAsync(member.Id, cancellationToken);
             dto.Contacts = _mapper.Map<IEnumerable<ContactDto>>(contacts);
 
-            return dto;
+            return Result<MemberDto>.Success(dto);
         }
     }
 }

@@ -2,11 +2,12 @@
 using MC.Shared.Contracts.Repositories;
 using MC.Shared.Models.Dtos.Members;
 using MC.Shared.Models.Entities;
+using MC.Shared.Results;
 using MediatR;
 
 namespace MC.Core.Members.Commands
 {
-    public class MemberCommandHandler : IRequestHandler<CreateMemberCommand, MemberDto>
+    public class MemberCommandHandler : IRequestHandler<CreateMemberCommand, Result<MemberDto>>
     {
         private readonly IMemberRepository _memberRepository;
         private readonly IMapper _mapper;
@@ -17,7 +18,7 @@ namespace MC.Core.Members.Commands
             _mapper = mapper;
         }
 
-        public async Task<MemberDto> Handle(CreateMemberCommand request, CancellationToken cancellationToken)
+        public async Task<Result<MemberDto>> Handle(CreateMemberCommand request, CancellationToken cancellationToken)
         {
             // Convert command to a entity
             var entity = _mapper.Map<Member>(request);
@@ -28,7 +29,7 @@ namespace MC.Core.Members.Commands
             // Convert entity to dto
             var dto = _mapper.Map<MemberDto>(result);
 
-            return dto;
+            return Result<MemberDto>.Success(dto);
         }
     }
 }

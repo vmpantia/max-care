@@ -8,32 +8,17 @@ namespace MC.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class MembersController : ControllerBase
+    public class MembersController : BaseController
     {
-        private readonly IMediator _mediator;
-
-        public MembersController(IMediator mediator) =>
-            _mediator = mediator;
+        public MembersController(IMediator mediator) : base(mediator) { }
 
         [HttpGet]
-        public async Task<IActionResult> GetMembersAsync()
-        {
-            var result = await _mediator.Send(new GetMembersQuery());
-            return Ok(result);
-        }
+        public async Task<IActionResult> GetMembersAsync() => await SendRequestAsync(new GetMembersQuery());
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetMembersAsync(Guid id)
-        {
-            var result = await _mediator.Send(new GetMemberByIdQuery(id));
-            return Ok(result);
-        }
+        public async Task<IActionResult> GetMembersAsync(Guid id) => await SendRequestAsync(new GetMemberByIdQuery(id));
 
         [HttpPost]
-        public async Task<IActionResult> CreateMemberAsync([FromBody] CreateMemberDto dto)
-        {
-            var result = await _mediator.Send(new CreateMemberCommand(dto));
-            return Ok(result);
-        }
+        public async Task<IActionResult> CreateMemberAsync([FromBody] CreateMemberDto dto) => await SendRequestAsync(new CreateMemberCommand(dto));
     }
 }

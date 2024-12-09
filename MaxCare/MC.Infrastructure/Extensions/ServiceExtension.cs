@@ -26,7 +26,7 @@ namespace MC.Infrastructure.Extensions
         {
             services.AddDbContext<MaxCareDbContext>((sp, opt) =>
             {
-                // Get maintainable interceptors\
+                // Get maintainable interceptors
                 var maintainableInterceptor = sp.GetRequiredService<MaintainableEntitiesInterceptor>();
 
                 opt.UseSqlServer(configuration.GetConnectionString("MigrationDb"),
