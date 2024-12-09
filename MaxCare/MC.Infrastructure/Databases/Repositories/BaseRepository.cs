@@ -26,28 +26,34 @@ namespace MC.Infrastructure.Databases.Repositories
 
         public TEntity? GetOne(Expression<Func<TEntity, bool>> predicate) => _table.FirstOrDefault(predicate);
 
-        public async Task CreateAsync(TEntity entity, bool isAutoSave = true, CancellationToken cancellationToken = default)
+        public async Task<TEntity> CreateAsync(TEntity entity, bool isAutoSave = true, CancellationToken cancellationToken = default)
         {
-            await _table.AddAsync(entity, cancellationToken);
+            var result = await _table.AddAsync(entity, cancellationToken);
 
             // Check if allow automatically save to database
             if(isAutoSave) await _context.SaveChangesAsync(cancellationToken);
+
+            return result.Entity;
         }
 
-        public async Task UpdateAsync(TEntity entity, bool isAutoSave = true, CancellationToken cancellationToken = default)
+        public async Task<TEntity> UpdateAsync(TEntity entity, bool isAutoSave = true, CancellationToken cancellationToken = default)
         {
-            _table.Update(entity);
+            var result = _table.Update(entity);
 
             // Check if allow automatically save to database
             if (isAutoSave) await _context.SaveChangesAsync(cancellationToken);
+
+            return result.Entity;
         }
 
-        public async Task DeleteAsync(TEntity entity, bool isAutoSave = true, CancellationToken cancellationToken = default)
+        public async Task<TEntity> DeleteAsync(TEntity entity, bool isAutoSave = true, CancellationToken cancellationToken = default)
         {
-            _table.Remove(entity);
+            var result = _table.Remove(entity);
 
             // Check if allow automatically save to database
             if (isAutoSave) await _context.SaveChangesAsync(cancellationToken);
+
+            return result.Entity;
         }
 
         public void Dispose() => _context.Dispose();

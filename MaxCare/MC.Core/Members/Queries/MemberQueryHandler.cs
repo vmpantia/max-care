@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using MC.Shared.Contracts.Repositories;
-using MC.Shared.Models.Dtos;
+using MC.Shared.Models.Dtos.Addresses;
+using MC.Shared.Models.Dtos.Contacts;
+using MC.Shared.Models.Dtos.Members;
 using MediatR;
 
 namespace MC.Core.Members.Queries

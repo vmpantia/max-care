@@ -1,4 +1,4 @@
-﻿using MC.Shared.Models.Dtos;
+﻿using MC.Shared.Models.Dtos.Members;
 using MediatR;
 
 namespace MC.Core.Members.Queries

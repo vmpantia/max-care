@@ -1,6 +1,6 @@
 ﻿using MC.Shared.Models.Enumerations;
 
-namespace MC.Shared.Models.Dtos
+namespace MC.Shared.Models.Dtos.Addresses
 {
     public class AddressDto
     {

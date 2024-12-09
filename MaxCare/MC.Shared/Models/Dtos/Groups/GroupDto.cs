@@ -1,6 +1,8 @@
-﻿using MC.Shared.Models.Enumerations;
+﻿using MC.Shared.Models.Dtos.Addresses;
+using MC.Shared.Models.Dtos.Contacts;
+using MC.Shared.Models.Enumerations;
 
-namespace MC.Shared.Models.Dtos
+namespace MC.Shared.Models.Dtos.Groups
 {
     public class GroupDto
     {

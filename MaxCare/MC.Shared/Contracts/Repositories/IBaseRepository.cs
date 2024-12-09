@@ -8,8 +8,8 @@ namespace MC.Shared.Contracts.Repositories
         IQueryable<TEntity> GetAll();
         IQueryable<TEntity> GetByExpression(Expression<Func<TEntity, bool>> predicate);
         TEntity? GetOne(Expression<Func<TEntity, bool>> predicate);
-        Task CreateAsync(TEntity entity, bool isAutoSave = true, CancellationToken cancellationToken = default);
-        Task UpdateAsync(TEntity entity, bool isAutoSave = true, CancellationToken cancellationToken = default);
-        Task DeleteAsync(TEntity entity, bool isAutoSave = true, CancellationToken cancellationToken = default);
+        Task<TEntity> CreateAsync(TEntity entity, bool isAutoSave = true, CancellationToken cancellationToken = default);
+        Task<TEntity> UpdateAsync(TEntity entity, bool isAutoSave = true, CancellationToken cancellationToken = default);
+        Task<TEntity> DeleteAsync(TEntity entity, bool isAutoSave = true, CancellationToken cancellationToken = default);
     }
 }

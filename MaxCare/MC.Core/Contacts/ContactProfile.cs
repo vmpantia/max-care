@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using MC.Shared.Models.Dtos;
+using MC.Shared.Models.Dtos.Contacts;
 using MC.Shared.Models.Entities;
 
 namespace MC.Core.Contacts

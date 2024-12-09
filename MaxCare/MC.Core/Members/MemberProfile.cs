@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using MC.Shared.Models.Dtos;
+using MC.Core.Members.Commands;
+using MC.Shared.Models.Dtos.Members;
 using MC.Shared.Models.Entities;
 
 namespace MC.Core.Members
@@ -13,6 +14,8 @@ namespace MC.Core.Members
                 .ForMember(dst => dst.LastModifiedAtUtc, opt => opt.MapFrom(src => src.EditedAtUtc ?? src.CreatedAtUtc))
                 .ForMember(dst => dst.Contacts, opt => opt.Ignore())
                 .ForMember(dst => dst.Addresses, opt => opt.Ignore());
+
+            CreateMap<CreateMemberCommand, Member>();
         }
     }
 }
