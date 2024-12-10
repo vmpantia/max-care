@@ -2,5 +2,5 @@
 
 namespace MC.Shared.Results.Errors
 {
-    public sealed record Error(ErrorType Type, string Description, Exception? Exception = null) { }
+    public record Error(ErrorType Type, string Message, object? Value = null) { }
 }

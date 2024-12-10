@@ -1,4 +1,7 @@
-﻿using MC.Shared.Results;
+﻿using Azure.Core;
+using FluentValidation;
+using MC.Core.Extensions;
+using MC.Shared.Results;
 using MC.Shared.Results.Errors;
 using MC.Shared.Results.Errors.Enumerations;
 using MediatR;
@@ -13,26 +16,28 @@ namespace MC.Api.Controllers
         public BaseController(IMediator mediator) =>
             _mediator = mediator;
 
-        protected async virtual Task<IActionResult> SendRequestAsync<TData>(IRequest<Result<TData>> request)
-            where TData : class
+        protected async virtual Task<IActionResult> SendRequestAsync<TRequest>(IRequest<Result<TRequest, Error>> request)
+            where TRequest : class
         {
             try
             {
                 // Send a request to command or query
                 var result = await _mediator.Send(request);
 
-                // Check if the result is success
-                if (result.IsSuccess) return Ok(result);
-
-                return result.Error?.Type switch
+                return result switch
                 {
-                    ErrorType.NotFound => NotFound(result),
-                    _ => BadRequest(result)
+                    { IsSuccess: false, Error: var error } when error!.Type == ErrorType.NotFound => NotFound(result),
+                    { IsSuccess: false } => BadRequest(result),
+                    _ => Ok(result)
                 };
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest((Result<TRequest, Error>)CommonError.Validation(ex.Errors.ToDictionary()));
             }
             catch (Exception ex)
             {
-                return BadRequest(CommonError.Exception(ex));
+                return BadRequest((Result<TRequest, Error>)CommonError.Unexpected(ex));
             }
         }
     }

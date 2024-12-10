@@ -2,35 +2,29 @@
 
 namespace MC.Shared.Results
 {
-    public class Result<TData>
+    public class Result<TData, TError>
+        where TData : class
+        where TError : Error
     {
-        private Result()
-        {
-            Data = default;
-            Error = null;
-            IsSuccess = true;
-        }
+        public TData? Data { get; init; }
+        public TError? Error { get; init; }
+        public bool IsSuccess { get; init; }
 
-        private Result(TData data) 
+        private Result(TData data)
         {
             Data = data;
             Error = null;
             IsSuccess = true;
         }
 
-        private Result(Error error)
+        protected Result(TError error)
         {
             Data = default;
             Error = error;
-            IsSuccess = true;
+            IsSuccess = false;
         }
 
-        public TData? Data { get; init; }
-        public Error? Error { get; init; }
-        public bool IsSuccess { get; init; }
-
-        public static Result<TData> Success() => new();
-        public static Result<TData> Success(TData data) => new(data);
-        public static Result<TData> Failure(Error error) => new(error);
+        public static implicit operator Result<TData, TError>(TData data) => new (data);
+        public static implicit operator Result<TData, TError>(TError error) => new (error);
     }
 }
