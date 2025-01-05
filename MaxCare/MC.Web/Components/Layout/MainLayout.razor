@@ -1,13 +1,16 @@
-﻿@inherits LayoutComponentBase
+﻿@using MC.Web.Extensions
+@using MC.Web.Models.UI
+@inherits LayoutComponentBase
 
 <Layout>
     <Sider Class="sidebar">
         <div class="logo" />
         <Menu Theme="MenuTheme.Dark" 
-              Mode="MenuMode.Inline" DefaultSelectedKeys=@(new[]{"1"})>
-            <MenuItem Key="1" Icon="@IconType.Outline.Home" RouterLink="">Home</MenuItem>
-            <MenuItem Key="2" Icon="@IconType.Outline.User" RouterLink="Counter">Counter</MenuItem>
-            <MenuItem Key="3" Icon="@IconType.Outline.User" RouterLink="Weather">Weather</MenuItem>
+              Mode="MenuMode.Inline" DefaultSelectedKeys=@(new[] { _sidebarItems.First().Key })>
+            @foreach(var item in _sidebarItems)
+            {
+                <MenuItem Key="@item.Key" Icon="@item.Icon" RouterLink="@item.Link">@item.Title</MenuItem>
+            }
         </Menu>
     </Sider>
     <Layout Class="site-layout">
@@ -48,3 +51,7 @@
         min-height: 280px;
     }
 </style>
+
+@code {
+    private IEnumerable<SidebarItem> _sidebarItems = UIExtension.GetSidebarItems();
+}
