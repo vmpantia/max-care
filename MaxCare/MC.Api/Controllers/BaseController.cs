@@ -26,7 +26,7 @@ namespace MC.Api.Controllers
 
                 return result switch
                 {
-                    { IsSuccess: false, Error: var error } when error!.Type == ErrorType.NotFound => NotFound(result),
+                    { IsSuccess: false, Error: var error } when error?.Type == ErrorType.NotFound => NotFound(result),
                     { IsSuccess: false } => BadRequest(result),
                     _ => Ok(result)
                 };
