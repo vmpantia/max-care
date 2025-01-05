@@ -1,4 +1,4 @@
-﻿using MC.Shared.Models.Entities;
+﻿using MC.Infrastructure.Models.Entities;
 using MC.Shared.Models.Enumerations;
 using Microsoft.EntityFrameworkCore;
 

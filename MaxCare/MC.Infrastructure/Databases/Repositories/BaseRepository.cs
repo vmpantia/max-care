@@ -1,5 +1,5 @@
 ﻿using MC.Infrastructure.Databases.Contexts;
-using MC.Shared.Contracts.Repositories;
+using MC.Infrastructure.Databases.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 

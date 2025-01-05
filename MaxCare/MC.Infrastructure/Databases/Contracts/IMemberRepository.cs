@@ -1,7 +1,7 @@
-﻿using MC.Shared.Models.Entities;
+﻿using MC.Infrastructure.Models.Entities;
 using System.Linq.Expressions;
 
-namespace MC.Shared.Contracts.Repositories
+namespace MC.Infrastructure.Databases.Contracts
 {
     public interface IMemberRepository : IBaseRepository<Member>
     {

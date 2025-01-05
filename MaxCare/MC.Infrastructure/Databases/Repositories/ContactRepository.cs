@@ -1,6 +1,6 @@
 ﻿using MC.Infrastructure.Databases.Contexts;
-using MC.Shared.Contracts.Repositories;
-using MC.Shared.Models.Entities;
+using MC.Infrastructure.Databases.Contracts;
+using MC.Infrastructure.Models.Entities;
 using MC.Shared.Models.Enumerations;
 using Microsoft.EntityFrameworkCore;
 

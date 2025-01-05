@@ -1,5 +1,5 @@
-﻿using MC.Shared.Models.Enumerations;
-using MC.Shared.Models.Interfaces;
+﻿using MC.Infrastructure.Models.Interfaces;
+using MC.Shared.Models.Enumerations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 

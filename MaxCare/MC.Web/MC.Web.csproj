@@ -10,4 +10,13 @@
     <PackageReference Include="AntDesign" Version="1.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Contracts\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MC.Shared\MC.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

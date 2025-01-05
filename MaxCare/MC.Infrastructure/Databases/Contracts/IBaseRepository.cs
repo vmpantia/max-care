@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace MC.Shared.Contracts.Repositories
+namespace MC.Infrastructure.Databases.Contracts
 {
     public interface IBaseRepository<TEntity> : IDisposable
         where TEntity : class

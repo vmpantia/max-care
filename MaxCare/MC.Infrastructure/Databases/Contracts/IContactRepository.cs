@@ -1,6 +1,6 @@
-﻿using MC.Shared.Models.Entities;
+﻿using MC.Infrastructure.Models.Entities;
 
-namespace MC.Shared.Contracts.Repositories
+namespace MC.Infrastructure.Databases.Contracts
 {
     public interface IContactRepository : IBaseRepository<Contact>
     {

@@ -1,4 +1,4 @@
-﻿namespace MC.Shared.Models.Interfaces
+﻿namespace MC.Infrastructure.Models.Interfaces
 {
     public interface IDeletableEntity
     {

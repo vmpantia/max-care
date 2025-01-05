@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
-using FluentValidation;
-using MC.Shared.Contracts.Repositories;
+using MC.Infrastructure.Databases.Contracts;
+using MC.Infrastructure.Models.Entities;
 using MC.Shared.Models.Dtos.Members;
-using MC.Shared.Models.Entities;
 using MC.Shared.Results;
 using MC.Shared.Results.Errors;
 using MediatR;

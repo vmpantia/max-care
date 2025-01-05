@@ -1,7 +1,7 @@
 ﻿using MC.Infrastructure.Databases.Contexts;
+using MC.Infrastructure.Databases.Contracts;
 using MC.Infrastructure.Databases.Interceptors;
 using MC.Infrastructure.Databases.Repositories;
-using MC.Shared.Contracts.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

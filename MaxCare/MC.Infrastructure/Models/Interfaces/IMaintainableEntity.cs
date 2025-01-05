@@ -1,6 +1,7 @@
-﻿using MC.Shared.Models.Enumerations;
+﻿using MC.Infrastructure.Models.Interfaces;
+using MC.Shared.Models.Enumerations;
 
-namespace MC.Shared.Models.Interfaces
+namespace MC.Infrastructure.Models.Interfaces
 {
     public interface IMaintainableEntity :
         ICreatableEntity,

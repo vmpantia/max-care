@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MC.Core.Members.Commands;
+using MC.Infrastructure.Models.Entities;
 using MC.Shared.Models.Dtos.Members;
-using MC.Shared.Models.Entities;
 
 namespace MC.Core.Members
 {

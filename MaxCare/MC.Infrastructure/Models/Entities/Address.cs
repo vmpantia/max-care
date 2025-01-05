@@ -1,8 +1,8 @@
-﻿using MC.Shared.Models.Enumerations;
-using MC.Shared.Models.Interfaces;
+﻿using MC.Infrastructure.Models.Interfaces;
+using MC.Shared.Models.Enumerations;
 using System.ComponentModel.DataAnnotations;
 
-namespace MC.Shared.Models.Entities
+namespace MC.Infrastructure.Models.Entities
 {
     public class Address : IMaintainableEntity
     {

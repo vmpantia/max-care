@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using MC.Infrastructure.Models.Entities;
 using MC.Shared.Models.Dtos.Addresses;
-using MC.Shared.Models.Entities;
 
 namespace MC.Core.Addresses
 {
