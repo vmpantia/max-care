@@ -1,10 +1,18 @@
 ﻿@page "/Members"
 @using MC.Shared.Models.Dtos.Members
 @using MC.Web.Contracts
-@inject IMemberService MemberService
 
-@_members.Count()
+<Table TItem="MemberDto" DataSource="@_members">
+    <PropertyColumn Property="m => m.FullName" Title="Name" Sortable Filterable />
+    <PropertyColumn Property="m => m.Gender" Title="Gender" Sortable Filterable />
+    <PropertyColumn Property="m => m.Birthdate" Title="Birthdate" Sortable Filterable />
+    <PropertyColumn Property="m => m.Type" Title="Type" Sortable Filterable />
+    <PropertyColumn Property="m => m.Status" Title="Status" Sortable Filterable />
+    <PropertyColumn Property="m => m.LastModifiedBy" Title="Last Modified By" Sortable Filterable />
+    <PropertyColumn Property="m => m.LastModifiedAtUtc" Title="Last Modified At" Sortable Filterable />
+</Table>
 
+@inject IMemberService MemberService;
 @code {
     private IEnumerable<MemberDto> _members = new List<MemberDto>();
 

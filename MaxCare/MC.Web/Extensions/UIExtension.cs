@@ -11,6 +11,7 @@ namespace MC.Web.Extensions
                 new SidebarItem("1", IconType.Outline.Home, "", "Home"),
                 new SidebarItem("2", IconType.Outline.User, "counter", "Counter"),
                 new SidebarItem("3", IconType.Outline.User, "weather", "Weather"),
+                new SidebarItem("4", IconType.Outline.UnorderedList, "members", "Members"),
             };
     }
 }
