@@ -8,11 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="AntDesign" Version="1.1.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Contracts\" />
-    <Folder Include="Services\" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>

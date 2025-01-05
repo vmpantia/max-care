@@ -1,0 +1,15 @@
+﻿@page "/Members"
+@using MC.Shared.Models.Dtos.Members
+@using MC.Web.Contracts
+@inject IMemberService MemberService
+
+@_members.Count()
+
+@code {
+    private IEnumerable<MemberDto> _members = new List<MemberDto>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _members = await MemberService.GetMembersAsync();
+    }
+}

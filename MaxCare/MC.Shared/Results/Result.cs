@@ -6,9 +6,7 @@ namespace MC.Shared.Results
         where TData : class
         where TError : Error
     {
-        public TData? Data { get; init; }
-        public TError? Error { get; init; }
-        public bool IsSuccess { get; init; }
+        public Result() { }
 
         private Result(TData data)
         {
@@ -23,6 +21,10 @@ namespace MC.Shared.Results
             Error = error;
             IsSuccess = false;
         }
+
+        public TData? Data { get; init; }
+        public TError? Error { get; init; }
+        public bool IsSuccess { get; init; }
 
         public static implicit operator Result<TData, TError>(TData data) => new (data);
         public static implicit operator Result<TData, TError>(TError error) => new (error);
