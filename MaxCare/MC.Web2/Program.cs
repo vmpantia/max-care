@@ -1,5 +1,5 @@
-using MC.Web;
 using MC.Web.Extensions;
+using MC.Web2;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 

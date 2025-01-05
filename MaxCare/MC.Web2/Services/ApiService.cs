@@ -1,8 +1,8 @@
 ﻿using MC.Shared.Results;
-using MC.Shared.Results.Errors;
 using MC.Web.Contracts;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
+using Error = MC.Shared.Results.Errors.Error;
 
 namespace MC.Web.Services
 {
@@ -30,7 +30,7 @@ namespace MC.Web.Services
             var request = new HttpRequestMessage(method, uri);
 
             // Prepare content if the data is not null
-            if (data is not null)
+            if(data is not null)
             {
                 request.Content = new StringContent(
                     JsonConvert.SerializeObject(data),
