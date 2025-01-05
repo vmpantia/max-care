@@ -3,6 +3,7 @@ using MC.Web.Components;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddAntDesign(); // UI Framework
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
